@@ -1,0 +1,14 @@
+type Favourite {
+  _id: ID!
+  type: String!
+}
+
+input IFavourite {
+  type: String!
+  id: String!
+}
+
+type Mutation {
+  add(input: IFavourite): Favourite
+  remove(input: IFavourite): Favourite
+}

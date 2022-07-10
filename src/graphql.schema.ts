@@ -71,6 +71,11 @@ export class UpdatedBand {
     genres?: Nullable<Nullable<NewGenre>[]>;
 }
 
+export class IFavourite {
+    type: string;
+    id: string;
+}
+
 export class NewGenre {
     name: string;
     description?: Nullable<string>;
@@ -173,6 +178,10 @@ export abstract class IMutation {
 
     abstract deleteBand(): Nullable<DeleteOutput> | Promise<Nullable<DeleteOutput>>;
 
+    abstract add(input?: Nullable<IFavourite>): Nullable<Favourite> | Promise<Nullable<Favourite>>;
+
+    abstract remove(input?: Nullable<IFavourite>): Nullable<Favourite> | Promise<Nullable<Favourite>>;
+
     abstract createGenre(input?: Nullable<NewGenre>): Nullable<Genre> | Promise<Nullable<Genre>>;
 
     abstract updateGenre(input?: Nullable<UpdatedGenre>): Nullable<Genre> | Promise<Nullable<Genre>>;
@@ -221,6 +230,11 @@ export class Band {
     members?: Nullable<Nullable<Member>[]>;
     website?: Nullable<string>;
     genres?: Nullable<Nullable<Genre>[]>;
+}
+
+export class Favourite {
+    _id: string;
+    type: string;
 }
 
 export class Track {
